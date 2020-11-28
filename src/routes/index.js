@@ -9,6 +9,13 @@
 
 
 function route(app){
+    app.use('/.netlify/functions/server/event',eventRoute); // trang sự kiện
+    app.use('/.netlify/functions/server/movie',movieRoute); // trang movie
+    app.use('/.netlify/functions/server/account',accountRoute); // trang accout
+    app.use('/.netlify/functions/server/movietime',movietimeRoute); // trang accout
+    app.use('/.netlify/functions/server/ticket',ticketRoute); // trang accout
+    app.use('/.netlify/functions/server/gift',giftRoute); // trang gift
+    app.use('/.netlify/functions/server/theater',theaterRoute); // trang theater
     app.use('/.netlify/functions/server', homeRoute); 
     app.use('/event',eventRoute); // trang sự kiện
     app.use('/movie',movieRoute); // trang movie
