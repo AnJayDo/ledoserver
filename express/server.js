@@ -40,7 +40,7 @@ app.use(morgan('combined'))
 
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
-app.set('views',path.join(__dirname).replace('express\\','src/view')))
+app.set('views',path.join(__dirname).replace('express\\','src/view'));
 
 route(app); 
 
