@@ -5,10 +5,10 @@ const morgan = require('morgan');
 const exphbs  = require('express-handlebars')
 const serverless = require('serverless-http')
 var methodOverride = require('method-override')
-const db=require('./config/db');
+const db=require('../src/config/db');
 const { query } = require('express');
 const app = express()
-const route = require('./routes')
+const route = require('../src/routes')
 var cors = require('cors')
 var validator = require('validator')
 require('dotenv').config()
@@ -16,7 +16,7 @@ require('dotenv').config()
 db.connect();
 
 app.use(cors())
-app.use('/src/resoures',express.static(path.join(__dirname,'resoures'))) // hiển thị ảnh
+app.use('/src/resoures',express.static(path.join(__dirname).replace('express\\','src/resoures'))) // hiển thị ảnh
 
 app.use(express.static(path.join(__dirname,'public')));
 // cài middleware cho phương thức post để nạp dữ liệu vào body, pt get thì đc tích hợp sẵn nên dữ liệu dc lưu sẵn vào query
@@ -40,7 +40,7 @@ app.use(morgan('combined'))
 
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
-app.set('views',path.join(__dirname,'view'))
+app.set('views',path.join(__dirname).replace('express\\','src/view')))
 
 route(app); 
 
